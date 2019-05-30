@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
+include (tools/toolchain-gcc.cmake)
 include (tools/spec2def.cmake)
 
 set(CMAKE_SHARED_LIBRARY_PREFIX "")

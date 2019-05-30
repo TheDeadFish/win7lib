@@ -52,4 +52,6 @@
 #define InterlockedAnd _InterlockedAnd
 #define InterlockedOr _InterlockedOr
 
+#include <intrin.h>
+
 #endif /* RTL_H */
