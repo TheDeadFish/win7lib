@@ -7,6 +7,9 @@ spec2def(krnl32ex.dll kernel32.spec)
 
 list(APPEND SOURCE
     sync.c
+    datetime.c
+    locale.c
+    ${CMAKE_CURRENT_BINARY_DIR}/locale_table.c    
     )
     
 
@@ -22,3 +25,10 @@ add_library(krnl32ex MODULE $<TARGET_OBJECTS:krnl32ex_obj>
 
 target_link_libraries(krnl32ex libntdllex ntdll )
 target_link_options(krnl32ex PRIVATE -nostartfiles -nodefaultlibs)
+
+# create locale_table.c
+add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/locale_table.c
+    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/locale.py
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/locale.py 
+)

@@ -19,3 +19,6 @@ DWORD WINAPI FilenameU2A_FitOrFail(LPSTR  DestA,
 #define REPARSE_DATA_BUFFER_HEADER_SIZE   FIELD_OFFSET(REPARSE_DATA_BUFFER, GenericReparseBuffer)
 #define DPRINT1(...)
 #define bIsFileApiAnsi AreFileApisANSI()
+
+
+LCID WINAPI LocaleNameToLCID(LPCWSTR name, DWORD flags);

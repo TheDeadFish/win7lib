@@ -11,3 +11,8 @@
 @ stdcall WakeConditionVariable(ptr) ntdll.RtlWakeConditionVariable
 
 @ stdcall InitializeCriticalSectionEx(ptr long long)
+
+
+
+
+@ stdcall GetTimeFormatEx(wstr long ptr wstr ptr long)
