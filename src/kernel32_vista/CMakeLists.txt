@@ -9,7 +9,10 @@ list(APPEND SOURCE
     sync.c
     datetime.c
     locale.c
-    ${CMAKE_CURRENT_BINARY_DIR}/locale_table.c    
+    ${CMAKE_CURRENT_BINARY_DIR}/locale_table.c  
+    stubs.c
+    finalpath.c
+    symlink.c
     )
     
 
