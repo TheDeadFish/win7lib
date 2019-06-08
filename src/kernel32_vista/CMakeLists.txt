@@ -13,6 +13,8 @@ list(APPEND SOURCE
     stubs.c
     finalpath.c
     symlink.c
+		setfileinfo.c
+		
     )
     
 

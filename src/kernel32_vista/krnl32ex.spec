@@ -24,3 +24,5 @@
 @ stdcall GetFinalPathNameByHandleW(ptr wstr long long)
 
 @ stdcall CreateSymbolicLinkW(wstr wstr long) 
+
+@ stdcall SetFileInformationByHandle(long long ptr long)
