@@ -19,3 +19,5 @@ add_compile_flags(-Wno-attributes)
 add_subdirectory(src/kernel32_vista)
 add_subdirectory(src/ntdll_vista)
 add_subdirectory(src/iphlpapi_vista)
+add_subdirectory(src/shell32_vista)
+

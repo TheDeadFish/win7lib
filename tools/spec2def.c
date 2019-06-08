@@ -618,11 +618,15 @@ OutputLine_def_GCC(FILE *fileDest, EXPORT *pexp)
     if (pexp->strTarget.buf)
     {
         int fIsExternal = !!ScanToken(pexp->strTarget.buf, '.');
+				int fIsOrdinal = !!ScanToken(pexp->strTarget.buf, '#');
+				
         DbgPrint("Got redirect '%.*s'\n", pexp->strTarget.len, pexp->strTarget.buf);
 
         /* print the target name, don't decorate if it is external */
         fprintf(fileDest, "=");
+				if(fIsExternal && fIsOrdinal)  fprintf(fileDest, "\"");
         PrintName(fileDest, pexp, &pexp->strTarget, !fIsExternal);
+				if(fIsExternal && fIsOrdinal)  fprintf(fileDest, "\"");
     }
     else if (((pexp->uFlags & FL_STUB) || (pexp->nCallingConvention == CC_STUB)) &&
              (pexp->strName.buf[0] == '?'))
