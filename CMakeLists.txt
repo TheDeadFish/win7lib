@@ -12,6 +12,7 @@ set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 add_definitions(-DUNICODE -D_UNICODE -D_WIN32_WINNT=0x502 -DWINVER=0x502)
 
 include_directories(src/include)
+add_subdirectory(tools)
 add_subdirectory(src/kernel32_vista)
 add_subdirectory(src/ntdll_vista)
 add_subdirectory(src/iphlpapi_vista)
