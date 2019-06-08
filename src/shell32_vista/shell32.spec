@@ -467,3 +467,5 @@
 
 # vista functions
 @ stdcall SHGetStockIconInfo(long long ptr)
+@ stdcall SHGetFolderPathEx(ptr long ptr ptr long)
+@ stdcall SHGetKnownFolderPath(ptr long ptr ptr)

@@ -6,6 +6,7 @@ spec2def(iphlpaex.dll shell32.spec)
 
 list(APPEND SOURCE
     stockIcon.cc
+		shell32.cc
     )
     
 
@@ -13,7 +14,7 @@ add_library(shell32_obj OBJECT ${SOURCE})
 
 add_library(shel32ex MODULE $<TARGET_OBJECTS:shell32_obj>    
     ${CMAKE_CURRENT_BINARY_DIR}/shell32.def
-		dllMain.c
+		dllMain.c internal.cc
 )
 
 
