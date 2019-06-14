@@ -1,0 +1,1 @@
+CALLPATCH(0x6B007D3D, RtlAppendUnicodeToString_hook)

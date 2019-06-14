@@ -3,6 +3,7 @@ include (tools/toolchain-gcc.cmake)
 include (tools/gcc.cmake)
 include(tools/compilerflags.cmake)
 include (tools/spec2def.cmake)
+include (tools/exemod.cmake)
 
 if(ARCH STREQUAL "amd64")
 	set (BIN_DIR ${CMAKE_SOURCE_DIR}/bin/bin64)
@@ -33,3 +34,8 @@ add_subdirectory(src/ntdll_vista)
 add_subdirectory(src/kernel32_vista)
 add_subdirectory(src/iphlpapi_vista)
 add_subdirectory(src/shell32_vista)
+
+# build the exm files
+if(ARCH STREQUAL "amd64")
+	add_subdirectory(src/wow64)
+endif()
