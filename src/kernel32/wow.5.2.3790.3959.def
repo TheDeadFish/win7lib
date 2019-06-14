@@ -1,0 +1,6 @@
+// CreateProcess OS Version check (_BasepIsImageVersionOk)
+ASMPATCH(0x7D4EBE62, "jmp 0x7D4EBE75")
+
+// internal functions
+SYMBOL(0x7D4D8D22, _BaseSetLastNTError@4)
+SYMBOL(0x7D4D8CEF, _SetLastError@4)

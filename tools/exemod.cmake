@@ -7,14 +7,30 @@ else()
 endif()
 
 function (add_exm_file name arch)
-	set (exm_file "${EXM_DIR}/${name}-kex${ARCH32}`${arch}.exm")
-	add_custom_command( OUTPUT ${exm_file}
-		COMMAND exe_mod ${exm_file} ${ARGN}
-		DEPENDS ${ARGN} )
-	set(exm_deps ${exm_deps} ${exm_file} PARENT_SCOPE)
+	if(arch MATCHES "^x64")
+		if(NOT ARCH STREQUAL "amd64")
+			return()
+		endif()
+	else()
+		if(ARCH STREQUAL "amd64")
+			return()
+		endif()
+	endif()
+
+	set (exm_file "${EXM_DIR}/${name}-extxp${ARCH32}.exm")
+	if (NOT exm_cmd)
+		set(exm_out ${exm_file} PARENT_SCOPE)
+	else()
+		set(exm_file "+${exm_file}")
+	endif()
+
+	set(exm_cmd ${exm_cmd} DEPENDS ${ARGN} COMMAND 
+		exe_mod ${exm_file}:${arch} ${ARGN} PARENT_SCOPE)
+
 endfunction()
 
 function (add_exm_target name)
-	message(STATUS ${exm_deps})
-	add_custom_target(exm_${name} ALL DEPENDS ${exm_deps})
+	add_custom_command(OUTPUT ${exm_out}
+		${exm_cmd} COMMAND_EXPAND_LISTS)
+	add_custom_target(exm_${name} ALL DEPENDS ${exm_out})	
 endfunction()
