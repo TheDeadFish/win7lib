@@ -136,38 +136,38 @@
 @ stdcall SetTcpEntry( ptr ) IPHLPAPI.SetTcpEntry
 @ stub SetTcpEntryToStack IPHLPAPI.SetTcpEntryToStack
 @ stdcall UnenableRouter( ptr ptr ) IPHLPAPI.UnenableRouter
-@ stdcall -arch=i386 _PfAddFiltersToInterface@24() _PfAddFiltersToInterface@24
-@ stdcall -arch=i386 _PfAddGlobalFilterToInterface@8() _PfAddGlobalFilterToInterface@8
-@ stdcall -arch=i386 _PfBindInterfaceToIPAddress@12() _PfBindInterfaceToIPAddress@12
-@ stdcall -arch=i386 _PfBindInterfaceToIndex@16() _PfBindInterfaceToIndex@16
-@ stdcall -arch=i386 _PfCreateInterface@24() _PfCreateInterface@24
-@ stdcall -arch=i386 _PfDeleteInterface@4() _PfDeleteInterface@4
-@ stdcall -arch=i386 _PfDeleteLog@0() _PfDeleteLog@0
-@ stdcall -arch=i386 _PfGetInterfaceStatistics@16() _PfGetInterfaceStatistics@16
-@ stdcall -arch=i386 _PfMakeLog@4() _PfMakeLog@4
-@ stdcall -arch=i386 _PfRebindFilters@8() _PfRebindFilters@8
-@ stdcall -arch=i386 _PfRemoveFilterHandles@12() _PfRemoveFilterHandles@12
-@ stdcall -arch=i386 _PfRemoveFiltersFromInterface@20() _PfRemoveFiltersFromInterface@20
-@ stdcall -arch=i386 _PfRemoveGlobalFilterFromInterface@8() _PfRemoveGlobalFilterFromInterface@8
-@ stdcall -arch=i386 _PfSetLogBuffer@28() _PfSetLogBuffer@28
-@ stdcall -arch=i386 _PfTestPacket@20() _PfTestPacket@20
-@ stdcall -arch=i386 _PfUnBindInterface@4() _PfUnBindInterface@4
-@ stdcall -arch=x86_64 _PfAddFiltersToInterface@24() IPHLPAPI._PfAddFiltersToInterface@24
-@ stdcall -arch=x86_64 _PfAddGlobalFilterToInterface@8() IPHLPAPI._PfAddGlobalFilterToInterface@8
-@ stdcall -arch=x86_64 _PfBindInterfaceToIPAddress@12() IPHLPAPI._PfBindInterfaceToIPAddress@12
-@ stdcall -arch=x86_64 _PfBindInterfaceToIndex@16() IPHLPAPI._PfBindInterfaceToIndex@16
-@ stdcall -arch=x86_64 _PfCreateInterface@24() IPHLPAPI._PfCreateInterface@24
-@ stdcall -arch=x86_64 _PfDeleteInterface@4() IPHLPAPI._PfDeleteInterface@4
-@ stdcall -arch=x86_64 _PfDeleteLog@0() IPHLPAPI._PfDeleteLog@0
-@ stdcall -arch=x86_64 _PfGetInterfaceStatistics@16() IPHLPAPI._PfGetInterfaceStatistics@16
-@ stdcall -arch=x86_64 _PfMakeLog@4() IPHLPAPI._PfMakeLog@4
-@ stdcall -arch=x86_64 _PfRebindFilters@8() IPHLPAPI._PfRebindFilters@8
-@ stdcall -arch=x86_64 _PfRemoveFilterHandles@12() IPHLPAPI._PfRemoveFilterHandles@12
-@ stdcall -arch=x86_64 _PfRemoveFiltersFromInterface@20() IPHLPAPI._PfRemoveFiltersFromInterface@20
-@ stdcall -arch=x86_64 _PfRemoveGlobalFilterFromInterface@8() IPHLPAPI._PfRemoveGlobalFilterFromInterface@8
-@ stdcall -arch=x86_64 _PfSetLogBuffer@28() IPHLPAPI._PfSetLogBuffer@28
-@ stdcall -arch=x86_64 _PfTestPacket@20() IPHLPAPI._PfTestPacket@20
-@ stdcall -arch=x86_64 _PfUnBindInterface@4() IPHLPAPI._PfUnBindInterface@4
+@ stdcall -arch=i386 _PfAddFiltersToInterface@24() IPHLPAPI._PfAddFiltersToInterface@24
+@ stdcall -arch=i386 _PfAddGlobalFilterToInterface@8() IPHLPAPI._PfAddGlobalFilterToInterface@8
+@ stdcall -arch=i386 _PfBindInterfaceToIPAddress@12() IPHLPAPI._PfBindInterfaceToIPAddress@12
+@ stdcall -arch=i386 _PfBindInterfaceToIndex@16() IPHLPAPI._PfBindInterfaceToIndex@16
+@ stdcall -arch=i386 _PfCreateInterface@24() IPHLPAPI._PfCreateInterface@24
+@ stdcall -arch=i386 _PfDeleteInterface@4() IPHLPAPI._PfDeleteInterface@4
+@ stdcall -arch=i386 _PfDeleteLog@0() IPHLPAPI._PfDeleteLog@0
+@ stdcall -arch=i386 _PfGetInterfaceStatistics@16() IPHLPAPI._PfGetInterfaceStatistics@16
+@ stdcall -arch=i386 _PfMakeLog@4() IPHLPAPI._PfMakeLog@4
+@ stdcall -arch=i386 _PfRebindFilters@8() IPHLPAPI._PfRebindFilters@8
+@ stdcall -arch=i386 _PfRemoveFilterHandles@12() IPHLPAPI._PfRemoveFilterHandles@12
+@ stdcall -arch=i386 _PfRemoveFiltersFromInterface@20() IPHLPAPI._PfRemoveFiltersFromInterface@20
+@ stdcall -arch=i386 _PfRemoveGlobalFilterFromInterface@8() IPHLPAPI._PfRemoveGlobalFilterFromInterface@8
+@ stdcall -arch=i386 _PfSetLogBuffer@28() IPHLPAPI._PfSetLogBuffer@28
+@ stdcall -arch=i386 _PfTestPacket@20() IPHLPAPI._PfTestPacket@20
+@ stdcall -arch=i386 _PfUnBindInterface@4() IPHLPAPI._PfUnBindInterface@4
+@ stdcall -arch=x86_64 _PfAddFiltersToInterface@24() IPHLPAPI._PfAddFiltersToInterface
+@ stdcall -arch=x86_64 _PfAddGlobalFilterToInterface@8() IPHLPAPI._PfAddGlobalFilterToInterface
+@ stdcall -arch=x86_64 _PfBindInterfaceToIPAddress@12() IPHLPAPI._PfBindInterfaceToIPAddress
+@ stdcall -arch=x86_64 _PfBindInterfaceToIndex@16() IPHLPAPI._PfBindInterfaceToIndex
+@ stdcall -arch=x86_64 _PfCreateInterface@24() IPHLPAPI._PfCreateInterface
+@ stdcall -arch=x86_64 _PfDeleteInterface@4() IPHLPAPI._PfDeleteInterface
+@ stdcall -arch=x86_64 _PfDeleteLog@0() IPHLPAPI._PfDeleteLog
+@ stdcall -arch=x86_64 _PfGetInterfaceStatistics@16() IPHLPAPI._PfGetInterfaceStatistics
+@ stdcall -arch=x86_64 _PfMakeLog@4() IPHLPAPI._PfMakeLog
+@ stdcall -arch=x86_64 _PfRebindFilters@8() IPHLPAPI._PfRebindFilters
+@ stdcall -arch=x86_64 _PfRemoveFilterHandles@12() IPHLPAPI._PfRemoveFilterHandles
+@ stdcall -arch=x86_64 _PfRemoveFiltersFromInterface@20() IPHLPAPI._PfRemoveFiltersFromInterface
+@ stdcall -arch=x86_64 _PfRemoveGlobalFilterFromInterface@8() IPHLPAPI._PfRemoveGlobalFilterFromInterface
+@ stdcall -arch=x86_64 _PfSetLogBuffer@28() IPHLPAPI._PfSetLogBuffer
+@ stdcall -arch=x86_64 _PfTestPacket@20() IPHLPAPI._PfTestPacket
+@ stdcall -arch=x86_64 _PfUnBindInterface@4() IPHLPAPI._PfUnBindInterface
 @ stub do_echo_rep IPHLPAPI.do_echo_rep
 @ stub do_echo_req IPHLPAPI.do_echo_req
 @ stub register_icmp IPHLPAPI.register_icmp
