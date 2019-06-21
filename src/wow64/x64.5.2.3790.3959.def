@@ -1,1 +1,2 @@
 CALLPATCH(0x6B007D3D, RtlAppendUnicodeToString_hook)
+CALLPATCH(0x6B007CF8, LdrGetKnownDllSectionHandle_hook)
