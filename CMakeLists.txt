@@ -27,7 +27,7 @@ add_definitions(-DUNICODE -D_UNICODE -D_WIN32_WINNT=0x502 -DWINVER=0x502)
 include_directories(src/include)
 add_subdirectory(tools)
 
-add_compile_flags("-Wno-attributes -fdata-sections")
+add_compile_flags("-Wno-attributes")
 
 # build the libraries
 add_subdirectory(src/ntdll_vista)
@@ -40,3 +40,4 @@ if(ARCH STREQUAL "amd64")
 	add_subdirectory(src/wow64)
 endif()
 add_subdirectory(src/kernel32)
+add_subdirectory(src/ntdll)
