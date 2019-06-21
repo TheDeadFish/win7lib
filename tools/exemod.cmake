@@ -17,14 +17,16 @@ function (add_exm_file name arch)
 		endif()
 	endif()
 
-	set (exm_file "${EXM_DIR}/${name}-extxp${ARCH32}.exm")
+	set (exm_file "${EXM_DIR}/${name},extxp${ARCH32}.exm")
 	if (NOT exm_cmd)
 		set(exm_out ${exm_file} PARENT_SCOPE)
 	else()
 		set(exm_file "+${exm_file}")
 	endif()
-
-	set(exm_cmd ${exm_cmd} DEPENDS ${ARGN} COMMAND 
+	
+	set (deps ${ARGN})
+	list(FILTER deps EXCLUDE REGEX ^-)
+	set(exm_cmd ${exm_cmd} DEPENDS ${deps} COMMAND 
 		exe_mod ${exm_file}:${arch} ${ARGN} PARENT_SCOPE)
 
 endfunction()
