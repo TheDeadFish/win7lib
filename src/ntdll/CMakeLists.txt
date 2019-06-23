@@ -8,5 +8,9 @@ add_exm_file(ntdll.dll x64.5.2.3790.3959 ${OBJS}
 add_exm_file(ntdll.dll x86.5.2.3790.3959 ${OBJS}
 	#${CMAKE_CURRENT_SOURCE_DIR}/x86.5.2.3790.3959.def
 )
+add_exm_file(ntdll.dll wow.5.2.3790.3959 ${OBJS}
+	#${CMAKE_CURRENT_SOURCE_DIR}/wow.5.2.3790.3959.def
+)
+
 	
 add_exm_target(ntdll)
