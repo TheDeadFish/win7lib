@@ -7,6 +7,10 @@ NTSTATUS NTAPI RtlAppendUnicodeToString(
   PCWSTR          Source
 ); */
 
+static inline
+PWSTR pUncStrEnd(PUNICODE_STRING pu) {
+	return ((PWSTR)(((char*)pu->Buffer)+pu->Length)); }
+
 static
 BOOL IsNt6Process(void) 
 {
@@ -17,7 +21,7 @@ NTSTATUS NTAPI RtlAppendUnicodeToString_hook(
   PUNICODE_STRING Destination,
   PCWSTR          Source
 ) {
-	if(IsNt6Process()) Source = L"\\krnlex\\ntdll.dll";
+	if(IsNt6Process()) { pUncStrEnd(Destination)[-1] = 'X'; }
 	return RtlAppendUnicodeToString(Destination, Source);
 }
 
