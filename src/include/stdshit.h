@@ -9,6 +9,8 @@ FORCEINLINE size_t NtReadTeb(size_t idx) { return __readfsdword(idx); }
 #define NtWriteTeb(idx, value) __writefsdword(idx, value)
 #endif
 #undef NtCurrentPeb
+
+__attribute__((const))
 FORCEINLINE PPEB NtCurrentPeb(void) { return (PPEB)
 	NtReadTeb(FIELD_OFFSET(TEB, ProcessEnvironmentBlock)); }
 FORCEINLINE void SetWin32Err(DWORD err) {

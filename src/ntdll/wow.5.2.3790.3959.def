@@ -1,0 +1,5 @@
+// redirection symbols
+SYMBOL(0x7D62EE83, LdrpMapDll_KnownDll_skipJmp)
+SYMBOL(0x7D62EEDE, LdrpMapDll_KnownDll_skipDst)
+SYMBOL(0x7D637FB5, redirect_callPatch1)
+SYMBOL(0x7D6798D4, aSystem32Kernel)
