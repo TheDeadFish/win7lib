@@ -2,4 +2,6 @@
 ASMPATCH(0x77E6D74C, "jmp 0x77E6D75F")
 
 // internal functions
-SYMBOL(0x77E61F30, _BaseSetLastNTError@4)
+SYMBOL(0x77E61F30, BaseSetLastNTError@4)
+SYMBOL(0x77E66F67, GetLastError@0)
+SYMBOL(0x77E61D69, SetLastError@4)

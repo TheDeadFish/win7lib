@@ -1,14 +1,14 @@
-@ stdcall InitializeSRWLock(ptr) NTDLLEX.RtlInitializeSRWLock
-@ stdcall AcquireSRWLockExclusive(ptr) NTDLLEX.RtlAcquireSRWLockExclusive
-@ stdcall AcquireSRWLockShared(ptr) NTDLLEX.RtlAcquireSRWLockShared
-@ stdcall ReleaseSRWLockExclusive(ptr) NTDLLEX.RtlReleaseSRWLockExclusive
-@ stdcall ReleaseSRWLockShared(ptr) NTDLLEX.RtlReleaseSRWLockShared
+@ stdcall InitializeSRWLock(ptr) NTDLL.RtlInitializeSRWLock
+@ stdcall AcquireSRWLockExclusive(ptr) NTDLL.RtlAcquireSRWLockExclusive
+@ stdcall AcquireSRWLockShared(ptr) NTDLL.RtlAcquireSRWLockShared
+@ stdcall ReleaseSRWLockExclusive(ptr) NTDLL.RtlReleaseSRWLockExclusive
+@ stdcall ReleaseSRWLockShared(ptr) NTDLL.RtlReleaseSRWLockShared
 
-@ stdcall InitializeConditionVariable(ptr) NTDLLEX.RtlInitializeConditionVariable
+@ stdcall InitializeConditionVariable(ptr) NTDLL.RtlInitializeConditionVariable
 @ stdcall SleepConditionVariableCS(ptr ptr long)
 @ stdcall SleepConditionVariableSRW(ptr ptr long long)
-@ stdcall WakeAllConditionVariable(ptr) NTDLLEX.RtlWakeAllConditionVariable
-@ stdcall WakeConditionVariable(ptr) NTDLLEX.RtlWakeConditionVariable
+@ stdcall WakeAllConditionVariable(ptr) NTDLL.RtlWakeAllConditionVariable
+@ stdcall WakeConditionVariable(ptr) NTDLL.RtlWakeConditionVariable
 
 @ stdcall InitializeCriticalSectionEx(ptr long long)
 

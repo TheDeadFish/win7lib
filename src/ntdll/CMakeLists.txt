@@ -1,6 +1,8 @@
+spec2def(ntdll.dll ../ntdll_vista/ntdllex.spec)
+
 list(APPEND OBJS
-	${CMAKE_CURRENT_BINARY_DIR}/../ntdll_vista/ntdllex.def
-	$<TARGET_OBJECTS:ntdllex_obj> -lntdll)
+	${CMAKE_CURRENT_BINARY_DIR}/ntdllex.def
+	$<TARGET_FILE:ntdllex> -lntdll)
 
 add_exm_file(x64.5.2.3790.3959 ${OBJS}
 	#${CMAKE_CURRENT_SOURCE_DIR}/x64.5.2.3790.3959.def
