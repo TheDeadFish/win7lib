@@ -1,6 +1,6 @@
 
 remove_definitions(-D_WIN32_WINNT=0x502 -DWINVER=0x502)
-add_definitions(-D_WIN32_WINNT=0x600 -DWINVER=0x600
+add_definitions(-D_WIN32_WINNT=0x601 -DWINVER=0x601
 	-D_KERNEL32_)
 
 spec2def(krnl32ex.dll krnl32ex.spec)
@@ -14,6 +14,7 @@ add_library(krnl32ex STATIC
 	finalpath.c
 	symlink.c
 	setfileinfo.c	
+	process.c
 )
 
 # create locale_table.c

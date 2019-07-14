@@ -20,5 +20,7 @@ DWORD WINAPI FilenameU2A_FitOrFail(LPSTR  DestA,
 #define DPRINT1(...)
 #define bIsFileApiAnsi AreFileApisANSI()
 
+#define FIXME(...)
+#define TRACE(...)
 
 LCID WINAPI LocaleNameToLCID(LPCWSTR name, DWORD flags);

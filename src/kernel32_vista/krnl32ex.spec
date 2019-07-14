@@ -55,3 +55,12 @@
 @ stdcall K32InitializeProcessForWsWatch(long) PSAPI.InitializeProcessForWsWatch
 @ stdcall K32QueryWorkingSet(long ptr long) PSAPI.QueryWorkingSet
 @ stdcall K32QueryWorkingSetEx(long ptr long) PSAPI.QueryWorkingSetEx
+
+# process.c functions
+@ stdcall InitializeProcThreadAttributeList(ptr long long ptr)
+@ stdcall UpdateProcThreadAttribute(ptr long long ptr long ptr ptr)
+@ stdcall DeleteProcThreadAttributeList(ptr)
+
+
+
+@ stdcall GetTickCount64() GetTickCount
