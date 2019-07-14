@@ -34,6 +34,7 @@ add_subdirectory(src/ntdll_vista)
 add_subdirectory(src/kernel32_vista)
 add_subdirectory(src/iphlpapi_vista)
 add_subdirectory(src/shell32_vista)
+add_subdirectory(src/user32_vista)
 
 # build the exm files
 if(ARCH STREQUAL "amd64")
@@ -41,3 +42,4 @@ if(ARCH STREQUAL "amd64")
 endif()
 add_subdirectory(src/kernel32)
 add_subdirectory(src/ntdll)
+add_subdirectory(src/user32)
