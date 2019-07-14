@@ -64,3 +64,4 @@
 
 
 @ stdcall GetTickCount64() GetTickCount
+@ stdcall GetCurrentProcessorNumberEx(ptr) ntdll.RtlGetCurrentProcessorNumberEx

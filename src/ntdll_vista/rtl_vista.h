@@ -54,4 +54,8 @@
 
 #include <intrin.h>
 
+/* wine stuff */
+#define FIXME(...)
+#define TRACE(...)
+
 #endif /* RTL_H */
