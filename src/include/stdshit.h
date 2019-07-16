@@ -46,3 +46,16 @@ static void* WINAPI BaseAllocHeap(DWORD size) {
 #define STOSD(p,v) asm("stosl" : "+D"(p) : "a"((int)(v)) : "memory")
 
 FORCEINLINE int isSingleBit(int x) { return !(x & (x-1)); }
+
+// typedefs
+typedef unsigned int u32;
+
+// fast case insensitive compare
+#define XORZ(dst, src) ({ char _ret_; asm("xor %2, %0" \
+	: "+r"(dst), "=@ccz"(_ret_) : "g"(src)); _ret_; })
+static inline int cmpiW(int ch1, int ch2) {
+	return (XORZ(ch2, ch1) || (!(ch2 & -33)
+		&& (u32)((ch1 &= -33)-65) < 26)); }
+		
+#define isSep(ch) ((ch == '\\')||(ch == '/'))
+

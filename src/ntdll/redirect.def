@@ -1,3 +1,5 @@
 MAKEJUMP(LdrpMapDll_KnownDll_skipJmp, LdrpMapDll_KnownDll_skipDst)
 MEMPATCH(aSystem32Kernel, L"\\SysWOW6X")
 CALLPATCH(redirect_callPatch1, RtlAppendUnicodeStringToString_hook1@8)
+CALLPATCH(redirect_callPatch2, RtlDoesFileExists_UstrEx_redir@8)
+CALLPATCH(redirect_callPatch3, RtlDoesFileExists_UstrEx_redir@8)
