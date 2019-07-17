@@ -1,0 +1,10 @@
+SYMBOL(0x7C8D9148, IID_IPersistIDList)
+SYMBOL(0x7C8DC524, IID_IParentAndItem)
+SYMBOL(0x7C8FAE9E, StringCchCatW@12)
+SYMBOL(0x7C92C883, StringCchCopyW@12)
+SYMBOL(0x7CA2ED14, CShellItem_CreateInstance@12)
+
+SYMBOL(0x7CAE30B4, g_himlIcons)
+SYMBOL(0x7CAE30C0, g_himlIconsSmall)
+
+SYMBOL(0x7C935259, ImageList_GetIcon@12)

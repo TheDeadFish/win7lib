@@ -1,9 +1,6 @@
 #ifndef _PRECOMP_H__
 #define _PRECOMP_H__
 
-#define _WIN32_WINNT 0x600
-#define WINVER 0x600
-
 #include <windows.h>
 #include <shlobj.h>
 #include <shlwapi.h>
@@ -25,7 +22,10 @@ HRESULT WINAPI StringCchCopyW(LPWSTR  pszDest,
 	size_t  cchDest, LPCWSTR pszSrc);
 extern "C"
 HRESULT WINAPI StringCchCatW(LPWSTR  pszDest,
-	size_t  cchDest, LPCWSTR pszSrc);		
+	size_t  cchDest, LPCWSTR pszSrc);
+	
+HICON WINAPI ImageList_GetIcon(
+  HIMAGELIST himl, int i, UINT flags);
 
 /*****************************************************************************
  * IParentAndItem interface
