@@ -4,3 +4,8 @@
 @ stdcall SHGetStockIconInfo(long long ptr)
 @ stdcall SHGetFolderPathEx(ptr long ptr ptr long)
 @ stdcall SHGetKnownFolderPath(ptr long ptr ptr)
+
+# stub functions
+@ stdcall SetCurrentProcessExplicitAppUserModelID(ptr)
+@ stdcall SHGetPropertyStoreForWindow(ptr ptr ptr)
+@ stdcall SHQueryUserNotificationState(ptr)
