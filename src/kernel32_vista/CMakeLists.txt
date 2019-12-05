@@ -5,7 +5,7 @@ add_definitions(-D_WIN32_WINNT=0x601 -DWINVER=0x601
 
 spec2def(krnl32ex.dll krnl32ex.spec)
 
-add_library(krnl32ex STATIC
+add_library(krnl32exO OBJECT
 	sync.c
 	datetime.c
 	locale.c
@@ -16,6 +16,12 @@ add_library(krnl32ex STATIC
 	setfileinfo.c	
 	process.c
 )
+
+
+add_library(krnl32ex STATIC $<TARGET_OBJECTS:krnl32exO>)
+add_library(krnl32exSo SHARED  $<TARGET_OBJECTS:krnl32exO> dllMain.c)
+target_link_libraries(krnl32exSo ntdllexSo ntdll)
+target_link_options(krnl32exSo PRIVATE -nostartfiles)
 
 # create locale_table.c
 add_custom_command(
