@@ -24,3 +24,8 @@ DWORD WINAPI FilenameU2A_FitOrFail(LPSTR  DestA,
 #define TRACE(...)
 
 LCID WINAPI LocaleNameToLCID(LPCWSTR name, DWORD flags);
+
+
+// logging stuff
+void WINAPI kex_fatal(const char* msg);
+void WINAPI key_warn(const char* msg);

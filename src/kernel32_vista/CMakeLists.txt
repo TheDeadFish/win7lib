@@ -16,19 +16,21 @@ add_library(krnl32exO OBJECT
 	symlink.c
 	setfileinfo.c	
 	process.c
+	ioex.c
+	log.c
 )
 
 
-add_library(krnl32ex STATIC $<TARGET_OBJECTS:krnl32exO>)
-add_library(krnl32exSo SHARED  $<TARGET_OBJECTS:krnl32exO> dllMain.c
+add_library(krnl32exS STATIC $<TARGET_OBJECTS:krnl32exO>)
+add_library(krnl32ex SHARED  $<TARGET_OBJECTS:krnl32exO> dllMain.c
 	${CMAKE_CURRENT_BINARY_DIR}/krnl32ex.def
 	${CMAKE_CURRENT_BINARY_DIR}/kernel32.def )
 	
 	
 	
 	
-target_link_libraries(krnl32exSo ntdllexSo ntdll)
-target_link_options(krnl32exSo PRIVATE -nostartfiles)
+target_link_libraries(krnl32ex ntdllex ntdll)
+target_link_options(krnl32ex PRIVATE -nostartfiles)
 
 # create locale_table.c
 add_custom_command(
