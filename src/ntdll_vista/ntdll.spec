@@ -88,7 +88,7 @@
 @ stdcall LdrDisableThreadCalloutsForDll(long) NTDLL.LdrDisableThreadCalloutsForDll
 @ stdcall LdrEnumResources(ptr ptr long ptr ptr) NTDLL.LdrEnumResources
 @ stdcall LdrEnumerateLoadedModules(long ptr long) NTDLL.LdrEnumerateLoadedModules
-@ stdcall LdrFindCreateProcessManifest(long ptr ptr long ptr) ; 5.1 and 5.2 only NTDLL.LdrFindCreateProcessManifest
+@ stdcall LdrFindCreateProcessManifest(long ptr ptr long ptr) NTDLL.LdrFindCreateProcessManifest
 @ stdcall LdrFindEntryForAddress(ptr ptr) NTDLL.LdrFindEntryForAddress
 @ stdcall LdrFindResourceDirectory_U(long ptr long ptr) NTDLL.LdrFindResourceDirectory_U
 @ stdcall LdrFindResource_U(long ptr long ptr) NTDLL.LdrFindResource_U

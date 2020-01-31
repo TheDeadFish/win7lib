@@ -1,3 +1,4 @@
+project(kernelEx)
 cmake_minimum_required(VERSION 3.12)
 include (tools/toolchain-gcc.cmake)
 include (tools/gcc.cmake)
@@ -14,6 +15,7 @@ endif()
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set(CMAKE_SHARED_MODULE_PREFIX "")
 set (CMAKE_MODULE_LINKER_FLAGS "-s -Wl,--gc-sections")
+set (CMAKE_SHARED_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
 
 
 

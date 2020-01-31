@@ -611,7 +611,7 @@ OutputLine_def_GCC(FILE *fileDest, EXPORT *pexp)
 {
     int bTracing = 0;
     /* Print the function name, with decoration for export libs */
-    PrintName(fileDest, pexp, &pexp->strName, gbImportLib);
+    PrintName(fileDest, pexp, &pexp->strName, 1);
     DbgPrint("Generating def line for '%.*s'\n", pexp->strName.len, pexp->strName.buf);
 
     /* Check if this is a forwarded export */
@@ -704,6 +704,10 @@ OutputLine_def(FILE *fileDest, EXPORT *pexp)
     {
         fprintf(fileDest, " DATA");
     }
+		
+		/* Write exported name */
+		fprintf(fileDest, " ==");
+		PrintName(fileDest, pexp, &pexp->strName, 0);
 
     fprintf(fileDest, "\n");
 

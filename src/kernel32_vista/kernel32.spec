@@ -1,8 +1,8 @@
 @ stdcall ActivateActCtx(ptr ptr) KERNEL32.ActivateActCtx
 @ stdcall AddAtomA(str) KERNEL32.AddAtomA
 @ stdcall AddAtomW(wstr) KERNEL32.AddAtomW
-@ stdcall AddConsoleAliasA(str str str) ;check KERNEL32.AddConsoleAliasA
-@ stdcall AddConsoleAliasW(wstr wstr wstr) ;check KERNEL32.AddConsoleAliasW
+@ stdcall AddConsoleAliasA(str str str) KERNEL32.AddConsoleAliasA
+@ stdcall AddConsoleAliasW(wstr wstr wstr) KERNEL32.AddConsoleAliasW
 @ stdcall AddLocalAlternateComputerNameA(str ptr) KERNEL32.AddLocalAlternateComputerNameA
 @ stdcall AddLocalAlternateComputerNameW(wstr ptr) KERNEL32.AddLocalAlternateComputerNameW
 @ stdcall AddRefActCtx(ptr) KERNEL32.AddRefActCtx
@@ -24,7 +24,7 @@
 @ stdcall BaseInitAppcompatCacheSupport() KERNEL32.BaseInitAppcompatCacheSupport
 @ stdcall BaseIsAppcompatInfrastructureDisabled()  KERNEL32.BaseIsAppcompatInfrastructureDisabled
 @ stdcall -version=0x501-0x502 BaseProcessInitPostImport() KERNEL32.BaseProcessInitPostImport
-@ stdcall BaseQueryModuleData(str str ptr ptr ptr) ;check KERNEL32.BaseQueryModuleData
+@ stdcall BaseQueryModuleData(str str ptr ptr ptr) KERNEL32.BaseQueryModuleData
 @ stdcall BaseUpdateAppcompatCache(long long long) KERNEL32.BaseUpdateAppcompatCache
 @ stdcall BasepCheckBadapp(long ptr long long long long long long long) KERNEL32.BasepCheckBadapp
 @ stdcall BasepCheckWinSaferRestrictions(long long long long long long) KERNEL32.BasepCheckWinSaferRestrictions
@@ -134,8 +134,8 @@
 @ stdcall DeleteTimerQueue(long) KERNEL32.DeleteTimerQueue
 @ stdcall DeleteTimerQueueEx (long long) KERNEL32.DeleteTimerQueueEx
 @ stdcall DeleteTimerQueueTimer(long long long) KERNEL32.DeleteTimerQueueTimer
-@ stdcall DeleteVolumeMountPointA(str) ;check KERNEL32.DeleteVolumeMountPointA
-@ stdcall DeleteVolumeMountPointW(wstr) ;check KERNEL32.DeleteVolumeMountPointW
+@ stdcall DeleteVolumeMountPointA(str) KERNEL32.DeleteVolumeMountPointA
+@ stdcall DeleteVolumeMountPointW(wstr) KERNEL32.DeleteVolumeMountPointW
 @ stdcall DeviceIoControl(long long ptr long ptr long ptr ptr) KERNEL32.DeviceIoControl
 @ stdcall DisableThreadLibraryCalls(long) KERNEL32.DisableThreadLibraryCalls
 @ stdcall DisconnectNamedPipe(long) KERNEL32.DisconnectNamedPipe
@@ -183,8 +183,8 @@
 @ stdcall EnumerateLocalComputerNamesW(ptr long wstr ptr) KERNEL32.EnumerateLocalComputerNamesW
 @ stdcall EraseTape(ptr long long) KERNEL32.EraseTape
 @ stdcall EscapeCommFunction(long long) KERNEL32.EscapeCommFunction
-@ stdcall ExitProcess(long) ; FIXME: ntdll.RtlExitUserProcess KERNEL32.ExitProcess
-@ stdcall ExitThread(long) ; FIXME: ntdll.RtlExitUserThread KERNEL32.ExitThread
+@ stdcall ExitProcess(long) KERNEL32.ExitProcess
+@ stdcall ExitThread(long) KERNEL32.ExitThread
 @ stdcall ExitVDM(long long) KERNEL32.ExitVDM
 @ stdcall ExpandEnvironmentStringsA(str ptr long) KERNEL32.ExpandEnvironmentStringsA
 @ stdcall ExpandEnvironmentStringsW(wstr ptr long) KERNEL32.ExpandEnvironmentStringsW
@@ -308,7 +308,7 @@
 @ stdcall GetConsoleMode(long ptr) KERNEL32.GetConsoleMode
 @ stdcall GetConsoleNlsMode(long ptr) KERNEL32.GetConsoleNlsMode
 @ stdcall GetConsoleOutputCP() KERNEL32.GetConsoleOutputCP
-@ stdcall GetConsoleProcessList(ptr long) ; missing in XP SP3 KERNEL32.GetConsoleProcessList
+@ stdcall GetConsoleProcessList(ptr long) KERNEL32.GetConsoleProcessList
 @ stdcall GetConsoleScreenBufferInfo(long ptr) KERNEL32.GetConsoleScreenBufferInfo
 @ stdcall GetConsoleSelectionInfo(ptr) KERNEL32.GetConsoleSelectionInfo
 @ stdcall GetConsoleTitleA(ptr long) KERNEL32.GetConsoleTitleA
@@ -363,7 +363,7 @@
 @ stdcall GetFullPathNameW(wstr long ptr ptr) KERNEL32.GetFullPathNameW
 @ stdcall GetGeoInfoA(long long ptr long long) KERNEL32.GetGeoInfoA
 @ stdcall GetGeoInfoW(long long ptr long long) KERNEL32.GetGeoInfoW
-@ stdcall -i386 GetHandleContext(long) ; missing on x64 KERNEL32.GetHandleContext
+@ stdcall -i386 GetHandleContext(long) KERNEL32.GetHandleContext
 @ stdcall GetHandleInformation(long ptr) KERNEL32.GetHandleInformation
 @ stdcall GetLargePageMinimum() KERNEL32.GetLargePageMinimum
 @ stdcall GetLargestConsoleWindowSize(long) KERNEL32.GetLargestConsoleWindowSize
@@ -817,10 +817,10 @@
 @ stdcall SetHandleCount(long) KERNEL32.SetHandleCount
 @ stdcall SetHandleInformation(long long long) KERNEL32.SetHandleInformation
 @ stdcall SetInformationJobObject(long long ptr long) KERNEL32.SetInformationJobObject
-@ stdcall SetLastConsoleEventActive() ; missing in XP SP3 KERNEL32.SetLastConsoleEventActive
+@ stdcall SetLastConsoleEventActive() KERNEL32.SetLastConsoleEventActive
 @ stdcall SetLastError(long) ntdll.RtlSetLastWin32Error
-@ stdcall SetLocalPrimaryComputerNameA(long long) ; missing in XP SP3 KERNEL32.SetLocalPrimaryComputerNameA
-@ stdcall SetLocalPrimaryComputerNameW(long long) ; missing in XP SP3 KERNEL32.SetLocalPrimaryComputerNameW
+@ stdcall SetLocalPrimaryComputerNameA(long long) KERNEL32.SetLocalPrimaryComputerNameA
+@ stdcall SetLocalPrimaryComputerNameW(long long) KERNEL32.SetLocalPrimaryComputerNameW
 @ stdcall SetLocalTime(ptr) KERNEL32.SetLocalTime
 @ stdcall SetLocaleInfoA(long long str) KERNEL32.SetLocaleInfoA
 @ stdcall SetLocaleInfoW(long long wstr) KERNEL32.SetLocaleInfoW
