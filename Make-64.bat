@@ -1,5 +1,6 @@
 @setlocal
 @call exmod.bat x64
+@if not exist build64 mkdir build64
 @set CPATH=%CPATH%;%NTNDK%
 @set CFLAGS=%OFLAGS% %PUSH_ARG%
 @set CXXFLAGS=%OCCFLG% %PUSH_ARG%

@@ -6,6 +6,7 @@ include(tools/compilerflags.cmake)
 include (tools/spec2def.cmake)
 include (tools/exemod.cmake)
 
+file(MAKE_DIRECTORY bin/exm)
 if(ARCH STREQUAL "amd64")
 	set (BIN_DIR ${CMAKE_SOURCE_DIR}/bin/bin64)
 else()	
