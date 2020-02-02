@@ -1,6 +1,6 @@
 remove_definitions(-D_WIN32_WINNT=0x502 -DWINVER=0x502)
 add_definitions(-D_WIN32_WINNT=0x601 -DWINVER=0x601
-    -D__NTDLL__ -D_NTOSKRNL_ -D_NTSYSTEM_)
+    -D__NTDLL__ -D_NTOSKRNL_ -D_NTSYSTEM_ -D_KERNEL32_)
 		
 	
 spec2def(ntdllex.dll ntdllex.spec)
@@ -13,11 +13,12 @@ add_library(ntdllexO OBJECT
 
 
 add_library(ntdllexS STATIC $<TARGET_OBJECTS:ntdllexO>)
-add_library(ntdllex SHARED $<TARGET_OBJECTS:ntdllexO> dllMain.c
+add_library(ntdllex SHARED $<TARGET_OBJECTS:ntdllexO> 
+	dllMain.c ../include/hotpatch.cc
 	${CMAKE_CURRENT_BINARY_DIR}/ntdllex.def
 	${CMAKE_CURRENT_BINARY_DIR}/ntdll.def 
 	
 	)
 
-target_link_libraries(ntdllex ntdll)
+target_link_libraries(ntdllex ntdll ntdllcrt)
 target_link_options(ntdllex PRIVATE -nostartfiles)

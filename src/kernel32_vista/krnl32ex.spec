@@ -64,5 +64,13 @@
 
 
 
-@ stdcall GetTickCount64() GetTickCount
+@ stdcall GetTickCount64() KERNEL32.GetTickCount
 @ stdcall GetCurrentProcessorNumberEx(ptr) NTDLLEX.RtlGetCurrentProcessorNumberEx
+
+
+# fileops.c
+@ stdcall GetFileInformationByHandleEx(ptr long ptr long)
+@ stdcall OpenFileById(ptr ptr long long ptr long)
+@ stdcall SetStdHandleEx(long ptr ptr)
+
+
