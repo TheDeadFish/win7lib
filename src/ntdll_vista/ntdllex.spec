@@ -10,3 +10,5 @@
 @ stdcall RtlReleaseSRWLockExclusive(ptr)
 
 @ stdcall RtlGetCurrentProcessorNumberEx(ptr)
+
+@ stdcall RtlGetNtVersionNumbers(ptr ptr ptr)
