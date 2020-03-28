@@ -63,7 +63,9 @@ cch* do_patch(cch* srcFile, cch* dstFile)
 
 int main(int argc, char** argv)
 {
-	if(argc != 2) { fatalError(NULL, "ntv6-patch: <file>\n"); }
-	cch* err = do_patch(argv[1],argv[1]);
-	if(err) fatalError(NULL, err);
+	if(argc < 2) { fatalError(NULL, "ntv6-patch: <file>\n"); }
+	for(int i = 1; i < argc; i++) {
+		cch* err = do_patch(argv[i],argv[i]);
+		if(err) contError(NULL, err);
+	}
 }
