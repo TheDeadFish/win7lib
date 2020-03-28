@@ -8,3 +8,5 @@
 @%CMAKE% ..\. -DMINGW_TOOLCHAIN_PREFIX= -DARCH=i386
 @mingw32-make 
 @popd
+
+copy /Y bin\bin32\*.dll %PROGRAMS%\lib 
