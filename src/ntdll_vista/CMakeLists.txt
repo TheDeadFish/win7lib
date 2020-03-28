@@ -8,7 +8,7 @@ spec2def(ntdll.dll ntdll.spec)
 
 	
 add_library(ntdllexO OBJECT 	
-	condvar.c srw.c rtl.c
+	condvar.c srw.c rtl.c time.c
 )		
 
 

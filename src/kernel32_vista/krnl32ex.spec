@@ -73,4 +73,5 @@
 @ stdcall OpenFileById(ptr ptr long long ptr long)
 @ stdcall SetStdHandleEx(long ptr ptr)
 
-
+# time.c
+@ stdcall GetSystemTimePreciseAsFileTime(ptr)

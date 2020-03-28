@@ -12,3 +12,6 @@
 @ stdcall RtlGetCurrentProcessorNumberEx(ptr)
 
 @ stdcall RtlGetNtVersionNumbers(ptr ptr ptr)
+
+# time.c
+@ stdcall -ret64 RtlGetSystemTimePrecise()

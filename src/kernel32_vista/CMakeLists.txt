@@ -18,6 +18,7 @@ add_library(krnl32exO OBJECT
 	process.c
 	ioex.c
 	log.c fileops.c
+	time.c
 )
 
 
