@@ -5,11 +5,11 @@ extern const char locale_table[];
 #define lodsw(ptr, ax) ({ asm ("lodsw" :"+a"(ax), "=S"(ptr) : "S"(ptr)); })
 
 #define ENUM_DELTA_STR_TABLE_418(_tab_, ...) ({ \
-	const char* pos = _tab_; int val = 0;  \
-	while(1) { int _ch_ = 0; lodsb(pos, _ch_); int len = _ch_; \
-		if(((char)_ch_) == 0) break; if(((char)_ch_) < 0) { \
-		if(_ch_ & 0x40) { lodsw(pos, _ch_); } else { lodsb(pos, _ch_); } \
-		_ch_ <<= 6; _ch_ ^= len; } val += _ch_ >> 4;  \
+	const BYTE* pos = _tab_; int val = 0;  \
+	while(1) { int len, _ch_ = 0; while(1) { len = *pos; pos++; \
+		_ch_ <<= 7; char x; asm("btr $7, %1; lea (%1,%2), %2" : \
+			"=@ccc"(x), "+r"(len), "+r"(_ch_)); if(!x) break; } \
+		if(_ch_ == 0) break; val += _ch_ >> 4; \
 		len &= 15; __VA_ARGS__; pos += len; }})
 		
 

@@ -488,17 +488,10 @@ for x in locale_table:
 		
 	delta = x[1]-cur_pos; cur_pos = x[1]
 	
-	if delta < 8:
-		write_byte(ln | (delta << 4))
-	elif delta < 1024:
-		ln |= ((delta << 4) & 0x30) | 0x80
-		write_byte(ln); write_byte((delta>>2) ^ (ln >> 6))
-	elif delta < 262144:
-		ln |= ((delta << 4) & 0x30) | 0xC0
-		write_byte(ln); write_byte((delta>>2) ^ (ln >> 6))
-		write_byte(delta>>10)
-	else:
-		sys.exit("delta too large");
+	delta = (delta << 4) | ln
+	if delta >= (1<<14): write_byte((delta >> 14) | 0x80)
+	if delta >= (1<<7): write_byte((delta >> 7) | 0x80)
+	write_byte(delta & 127)
 		
 	write_string(x[0])
 
