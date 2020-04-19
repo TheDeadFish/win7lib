@@ -41,6 +41,13 @@ static void* WINAPI BaseAllocHeap(DWORD size) {
 #define ZEROREG(x) asm volatile("xor %0,%0" : "+r"(x)); 
 #define VARSET(x,y) { x=y; VARFIX(x); }
 
+// 
+#define XOR(d,m) ({ char z; asm("xor %2, %1" : "=@ccnz"(z), "+r"(d), "+r"(m)); z; })
+#define AND(d,m) ({ char z; asm("and %2, %1" : "=@ccnz"(z), "+r"(d) : "g"(m)); z; })
+#define INCP(s) asm("inc %0" : "+r"(s))	
+#define MOVZX(d, s) asm("movzx %1, %0;" : "=r"(d) : "g"(s))
+#define LDI_AND(d, s, m) { MOVZX(d, RB(s,0)); INCP(s); AND(d, m); }
+
 // x86 string operations
 #define STOSDN(p,v,n) for(int i = 0; i < 5; i++) STOSD(p,v);
 #define STOSD(p,v) asm("stosl" : "+D"(p) : "a"((int)(v)) : "memory")

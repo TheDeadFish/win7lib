@@ -75,3 +75,8 @@
 
 # time.c
 @ stdcall GetSystemTimePreciseAsFileTime(ptr)
+
+# locale.c
+@ stdcall LocaleNameToLCID(ptr long)
+@ stdcall LCIDToLocaleName(long ptr long long)
+

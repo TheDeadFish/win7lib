@@ -44,3 +44,5 @@ add_subdirectory(src/kernel32)
 add_subdirectory(src/ntdll)
 add_subdirectory(src/user32)
 add_subdirectory(src/shell32)
+
+add_subdirectory(tests)
