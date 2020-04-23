@@ -80,3 +80,8 @@
 @ stdcall LocaleNameToLCID(ptr long)
 @ stdcall LCIDToLocaleName(long ptr long long)
 
+@ stdcall GetLocaleInfoW(long long ptr long) GetLocaleInfoW_
+@ stdcall GetLocaleInfoEx(ptr long ptr long)
+@ stdcall GetNumberFormatEx(ptr long ptr ptr ptr long)
+@ stdcall IsValidLocaleName(ptr)
+

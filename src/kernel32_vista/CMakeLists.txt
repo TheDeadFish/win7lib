@@ -10,6 +10,8 @@ add_library(krnl32exO OBJECT
 	sync.c
 	locale/datetime.c
 	locale/locale.c
+	locale/xxx.c
+	
 	${CMAKE_CURRENT_BINARY_DIR}/locale_table.c  
 	stubs.c
 	finalpath.c

@@ -79,11 +79,11 @@ WAS_LINK:
 	ENUM_DELTA_STR_TABLE_418(0,
 		if(val == lcid) { 
 			ENUM_DELTA_LINK(lcid = val; goto WAS_LINK);
-			if(count <= len) { 
-				SetLastError(	ERROR_INSUFFICIENT_BUFFER); 
-				return 0; }
-			else { strcpyn_zxbw(lpName, pos, len); 
-				return len+1; }
+			if(count != 0) { if(count <= len) { 
+					SetLastError(	ERROR_INSUFFICIENT_BUFFER); 
+					return 0; }
+				strcpyn_zxbw(lpName, pos, len); 
+			} return len+1;
 		}
 	);
 	

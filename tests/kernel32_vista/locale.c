@@ -113,6 +113,10 @@ static LANGID (WINAPI *pSetThreadUILanguage)(LANGID);
 static LANGID (WINAPI *pGetThreadUILanguage)(VOID);
 static INT (WINAPI *pNormalizeString)(NORM_FORM, LPCWSTR, INT, LPWSTR, INT);
 static INT (WINAPI *pFindStringOrdinal)(DWORD, LPCWSTR lpStringSource, INT, LPCWSTR, INT, BOOL);
+static INT (WINAPI *pGetLocaleInfoW)(LCID, LCTYPE, LPWSTR, INT);
+
+
+
 
 static void InitFunctionPointers(void)
 {
@@ -150,6 +154,7 @@ static void InitFunctionPointers(void)
   X(GetThreadUILanguage);
   X(NormalizeString);
   X(FindStringOrdinal);
+  X(GetLocaleInfoW);
 
   mod = GetModuleHandleA("ntdll");
   X(RtlUpcaseUnicodeChar);
@@ -302,17 +307,17 @@ static void test_GetLocaleInfoW(void)
   DWORD ret;
   INT i;
 
-  ret = GetLocaleInfoW(lcid_en, LOCALE_SMONTHNAME1, bufferW, ARRAY_SIZE(bufferW));
+  ret = pGetLocaleInfoW(lcid_en, LOCALE_SMONTHNAME1, bufferW, ARRAY_SIZE(bufferW));
   if (!ret) {
-      win_skip("GetLocaleInfoW() isn't implemented\n");
+      win_skip("pGetLocaleInfoW() isn't implemented\n");
       return;
   }
 
-  ret = GetLocaleInfoW(lcid_en, LOCALE_ILANGUAGE|LOCALE_RETURN_NUMBER, (WCHAR*)&val, sizeof(val)/sizeof(WCHAR));
+  ret = pGetLocaleInfoW(lcid_en, LOCALE_ILANGUAGE|LOCALE_RETURN_NUMBER, (WCHAR*)&val, sizeof(val)/sizeof(WCHAR));
   ok(ret, "got %d\n", ret);
   ok(val == lcid_en, "got 0x%08x\n", val);
 
-  ret = GetLocaleInfoW(lcid_en_neut, LOCALE_SNAME, bufferW, ARRAY_SIZE(bufferW));
+  ret = pGetLocaleInfoW(lcid_en_neut, LOCALE_SNAME, bufferW, ARRAY_SIZE(bufferW));
   if (ret)
   {
       static const WCHAR slangW[] = {'E','n','g','l','i','s','h',' ','(','U','n','i','t','e','d',' ',
@@ -323,7 +328,7 @@ static void test_GetLocaleInfoW(void)
 
       ok(!lstrcmpW(bufferW, enW), "got wrong name %s\n", wine_dbgstr_w(bufferW));
 
-      ret = GetLocaleInfoW(lcid_en_neut, LOCALE_SCOUNTRY, bufferW, ARRAY_SIZE(bufferW));
+      ret = pGetLocaleInfoW(lcid_en_neut, LOCALE_SCOUNTRY, bufferW, ARRAY_SIZE(bufferW));
       ok(ret, "got %d\n", ret);
       if ((PRIMARYLANGID(LANGIDFROMLCID(GetSystemDefaultLCID())) != LANG_ENGLISH) ||
           (PRIMARYLANGID(LANGIDFROMLCID(GetThreadLocale())) != LANG_ENGLISH))
@@ -333,7 +338,7 @@ static void test_GetLocaleInfoW(void)
       else
           ok(!lstrcmpW(statesW, bufferW), "got wrong name %s\n", wine_dbgstr_w(bufferW));
 
-      ret = GetLocaleInfoW(lcid_en_neut, LOCALE_SLANGUAGE, bufferW, ARRAY_SIZE(bufferW));
+      ret = pGetLocaleInfoW(lcid_en_neut, LOCALE_SLANGUAGE, bufferW, ARRAY_SIZE(bufferW));
       ok(ret, "got %d\n", ret);
       if ((PRIMARYLANGID(LANGIDFROMLCID(GetSystemDefaultLCID())) != LANG_ENGLISH) ||
           (PRIMARYLANGID(LANGIDFROMLCID(GetThreadLocale())) != LANG_ENGLISH))
@@ -353,13 +358,13 @@ static void test_GetLocaleInfoW(void)
           lcid = MAKELCID(langid, SORT_DEFAULT);
 
           val = 0;
-          GetLocaleInfoW(lcid, LOCALE_ILANGUAGE|LOCALE_RETURN_NUMBER, (WCHAR*)&val, sizeof(val)/sizeof(WCHAR));
+          pGetLocaleInfoW(lcid, LOCALE_ILANGUAGE|LOCALE_RETURN_NUMBER, (WCHAR*)&val, sizeof(val)/sizeof(WCHAR));
           todo_wine_if (ptr->todo & 0x1)
               ok(val == ptr->lcid || (val && broken(val == ptr->lcid_broken)), "%s: got wrong lcid 0x%04x, expected 0x%04x\n",
                   wine_dbgstr_w(ptr->name), val, ptr->lcid);
 
           /* now check LOCALE_SNAME */
-          GetLocaleInfoW(lcid, LOCALE_SNAME, bufferW, ARRAY_SIZE(bufferW));
+          pGetLocaleInfoW(lcid, LOCALE_SNAME, bufferW, ARRAY_SIZE(bufferW));
           todo_wine_if (ptr->todo & 0x2)
               ok(!lstrcmpW(bufferW, ptr->sname) ||
                  (*ptr->sname_broken && broken(!lstrcmpW(bufferW, ptr->sname_broken))),
@@ -370,12 +375,12 @@ static void test_GetLocaleInfoW(void)
   else
       win_skip("English neutral locale not supported\n");
 
-  ret = GetLocaleInfoW(lcid_ru, LOCALE_SMONTHNAME1, bufferW, ARRAY_SIZE(bufferW));
+  ret = pGetLocaleInfoW(lcid_ru, LOCALE_SMONTHNAME1, bufferW, ARRAY_SIZE(bufferW));
   if (!ret) {
       win_skip("LANG_RUSSIAN locale data unavailable\n");
       return;
   }
-  ret = GetLocaleInfoW(lcid_ru, LOCALE_SMONTHNAME1|LOCALE_RETURN_GENITIVE_NAMES,
+  ret = pGetLocaleInfoW(lcid_ru, LOCALE_SMONTHNAME1|LOCALE_RETURN_GENITIVE_NAMES,
                        bufferW, ARRAY_SIZE(bufferW));
   if (!ret) {
       win_skip("LOCALE_RETURN_GENITIVE_NAMES isn't supported\n");
@@ -394,7 +399,7 @@ static void test_GetLocaleInfoW(void)
 
   bufferW[0] = 'a';
   SetLastError(0xdeadbeef);
-  ret = GetLocaleInfoW(lcid_ru, LOCALE_RETURN_GENITIVE_NAMES, bufferW, ARRAY_SIZE(bufferW));
+  ret = pGetLocaleInfoW(lcid_ru, LOCALE_RETURN_GENITIVE_NAMES, bufferW, ARRAY_SIZE(bufferW));
   ok(ret == 0,
      "LOCALE_RETURN_GENITIVE_NAMES itself doesn't return anything, got %d\n", ret);
   ok(bufferW[0] == 'a', "Expected buffer to be untouched\n");
@@ -404,13 +409,13 @@ static void test_GetLocaleInfoW(void)
   /* yes, test empty 13 month entry too */
   for (i = 0; i < 12; i++) {
       bufferW[0] = 0;
-      ret = GetLocaleInfoW(lcid_ru, (LOCALE_SMONTHNAME1+i)|LOCALE_RETURN_GENITIVE_NAMES,
+      ret = pGetLocaleInfoW(lcid_ru, (LOCALE_SMONTHNAME1+i)|LOCALE_RETURN_GENITIVE_NAMES,
                            bufferW, ARRAY_SIZE(bufferW));
       ok(ret, "Expected non zero result\n");
       ok(ret == lstrlenW(bufferW)+1, "Expected actual length, got %d, length %d\n",
                                     ret, lstrlenW(bufferW));
       buffer2W[0] = 0;
-      ret = GetLocaleInfoW(lcid_ru, LOCALE_SMONTHNAME1+i, buffer2W, ARRAY_SIZE(buffer2W));
+      ret = pGetLocaleInfoW(lcid_ru, LOCALE_SMONTHNAME1+i, buffer2W, ARRAY_SIZE(buffer2W));
       ok(ret, "Expected non zero result\n");
       ok(ret == lstrlenW(buffer2W)+1, "Expected actual length, got %d, length %d\n",
                                     ret, lstrlenW(buffer2W));
@@ -420,13 +425,13 @@ static void test_GetLocaleInfoW(void)
 
       /* for locale without genitive names nominative returned in both cases */
       bufferW[0] = 0;
-      ret = GetLocaleInfoW(lcid_en, (LOCALE_SMONTHNAME1+i)|LOCALE_RETURN_GENITIVE_NAMES,
+      ret = pGetLocaleInfoW(lcid_en, (LOCALE_SMONTHNAME1+i)|LOCALE_RETURN_GENITIVE_NAMES,
                            bufferW, ARRAY_SIZE(bufferW));
       ok(ret, "Expected non zero result\n");
       ok(ret == lstrlenW(bufferW)+1, "Expected actual length, got %d, length %d\n",
                                     ret, lstrlenW(bufferW));
       buffer2W[0] = 0;
-      ret = GetLocaleInfoW(lcid_en, LOCALE_SMONTHNAME1+i, buffer2W, ARRAY_SIZE(buffer2W));
+      ret = pGetLocaleInfoW(lcid_en, LOCALE_SMONTHNAME1+i, buffer2W, ARRAY_SIZE(buffer2W));
       ok(ret, "Expected non zero result\n");
       ok(ret == lstrlenW(buffer2W)+1, "Expected actual length, got %d, length %d\n",
                                     ret, lstrlenW(buffer2W));
@@ -3964,16 +3969,16 @@ static void test_EnumTimeFormatsW(void)
     date_fmt_bufW[0] = 0;
     ret = EnumTimeFormatsW(enum_datetime_procW, lcid, 0);
     ok(ret, "EnumTimeFormatsW(0) error %d\n", GetLastError());
-    ret = GetLocaleInfoW(lcid, LOCALE_STIMEFORMAT, bufW, ARRAY_SIZE(bufW));
-    ok(ret, "GetLocaleInfoW(LOCALE_STIMEFORMAT) error %d\n", GetLastError());
+    ret = pGetLocaleInfoW(lcid, LOCALE_STIMEFORMAT, bufW, ARRAY_SIZE(bufW));
+    ok(ret, "pGetLocaleInfoW(LOCALE_STIMEFORMAT) error %d\n", GetLastError());
     ok(!lstrcmpW(date_fmt_bufW, bufW), "expected \"%s\" got \"%s\"\n", wine_dbgstr_w(date_fmt_bufW),
         wine_dbgstr_w(bufW));
 
     date_fmt_bufW[0] = 0;
     ret = EnumTimeFormatsW(enum_datetime_procW, lcid, LOCALE_USE_CP_ACP);
     ok(ret, "EnumTimeFormatsW(LOCALE_USE_CP_ACP) error %d\n", GetLastError());
-    ret = GetLocaleInfoW(lcid, LOCALE_STIMEFORMAT, bufW, ARRAY_SIZE(bufW));
-    ok(ret, "GetLocaleInfoW(LOCALE_STIMEFORMAT) error %d\n", GetLastError());
+    ret = pGetLocaleInfoW(lcid, LOCALE_STIMEFORMAT, bufW, ARRAY_SIZE(bufW));
+    ok(ret, "pGetLocaleInfoW(LOCALE_STIMEFORMAT) error %d\n", GetLastError());
     ok(!lstrcmpW(date_fmt_bufW, bufW), "expected \"%s\" got \"%s\"\n", wine_dbgstr_w(date_fmt_bufW),
         wine_dbgstr_w(bufW));
 
@@ -3986,8 +3991,8 @@ static void test_EnumTimeFormatsW(void)
         char buf[256];
 
         ok(ret, "EnumTimeFormatsW(TIME_NOSECONDS) error %d\n", GetLastError());
-        ret = GetLocaleInfoW(lcid, LOCALE_SSHORTTIME, bufW, ARRAY_SIZE(bufW));
-        ok(ret, "GetLocaleInfoW(LOCALE_SSHORTTIME) error %d\n", GetLastError());
+        ret = pGetLocaleInfoW(lcid, LOCALE_SSHORTTIME, bufW, ARRAY_SIZE(bufW));
+        ok(ret, "pGetLocaleInfoW(LOCALE_SSHORTTIME) error %d\n", GetLastError());
         ok(!lstrcmpW(date_fmt_bufW, bufW), "expected \"%s\" got \"%s\"\n", wine_dbgstr_w(date_fmt_bufW),
             wine_dbgstr_w(bufW));
 
@@ -4628,7 +4633,7 @@ static void test_GetLocaleInfoEx(void)
 
         ret = pGetLocaleInfoEx(LOCALE_NAME_USER_DEFAULT, LOCALE_SNAME, bufferW, ARRAY_SIZE(bufferW));
         ok(ret && ret == lstrlenW(bufferW)+1, "got ret value %d\n", ret);
-        ret = GetLocaleInfoW(GetUserDefaultLCID(), LOCALE_SNAME, buffer2, ARRAY_SIZE(buffer2));
+        ret = pGetLocaleInfoW(GetUserDefaultLCID(), LOCALE_SNAME, buffer2, ARRAY_SIZE(buffer2));
         ok(ret && ret == lstrlenW(buffer2)+1, "got ret value %d\n", ret);
         ok(!lstrcmpW(bufferW, buffer2), "LOCALE_SNAMEs don't match %s %s\n", wine_dbgstr_w(bufferW), wine_dbgstr_w(buffer2));
     }

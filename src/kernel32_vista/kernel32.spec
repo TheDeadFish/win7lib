@@ -371,7 +371,7 @@
 @ stdcall -version=0x500-0x502 GetLinguistLangSize(ptr) KERNEL32.GetLinguistLangSize
 @ stdcall GetLocalTime(ptr) KERNEL32.GetLocalTime
 @ stdcall GetLocaleInfoA(long long ptr long) KERNEL32.GetLocaleInfoA
-@ stdcall GetLocaleInfoW(long long ptr long) KERNEL32.GetLocaleInfoW
+#@ stdcall GetLocaleInfoW(long long ptr long) KERNEL32.GetLocaleInfoW
 @ stdcall GetLogicalDriveStringsA(long ptr) KERNEL32.GetLogicalDriveStringsA
 @ stdcall GetLogicalDriveStringsW(long ptr) KERNEL32.GetLogicalDriveStringsW
 @ stdcall GetLogicalDrives() KERNEL32.GetLogicalDrives
