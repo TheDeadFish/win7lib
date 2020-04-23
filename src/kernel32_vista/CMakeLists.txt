@@ -8,8 +8,8 @@ spec2def(krnl32ex.dll kernel32.spec)
 
 add_library(krnl32exO OBJECT
 	sync.c
-	datetime.c
-	locale.c
+	locale/datetime.c
+	locale/locale.c
 	${CMAKE_CURRENT_BINARY_DIR}/locale_table.c  
 	stubs.c
 	finalpath.c
@@ -36,6 +36,6 @@ target_link_options(krnl32ex PRIVATE -nostartfiles)
 # create locale_table.c
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/locale_table.c
-    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/locale.py
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/locale.py 
+    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/locale/locale.py
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/locale/locale.py 
 )

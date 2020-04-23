@@ -1,4 +1,4 @@
-#include "k32_vista.h"
+#include "../k32_vista.h"
 
 int 
 WINAPI 

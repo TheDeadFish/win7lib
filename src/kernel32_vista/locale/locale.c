@@ -1,4 +1,4 @@
-#include "k32_vista.h"
+#include "../k32_vista.h"
 extern const char locale_table[];
 
 #define ENUM_DELTA_NEXT() {  \
