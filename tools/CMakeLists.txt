@@ -6,5 +6,7 @@ endfunction()
 
 add_host_tool(spec2def spec2def.c)
 
-add_executable(ntv6-patch ntv6-patch.cc)
-target_link_libraries(ntv6-patch -lpeFile -lexshit -lstdshit)
+if(NOT ARCH STREQUAL "amd64")
+	add_executable(ntv6-patch ntv6-patch.cc)
+	target_link_libraries(ntv6-patch -lpeFile -lexshit -lstdshit)
+endif()
