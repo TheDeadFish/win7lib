@@ -1,6 +1,7 @@
 #include <windows.h>
 #include "modmap.c"
 
+#if 0
 BOOL WINAPI
 VirtualProtect(PVOID lpAddress, SIZE_T dwSize,
 	DWORD flNewProtect, PDWORD lpflOldProtect)
@@ -18,6 +19,7 @@ RaiseException(DWORD dwExceptionCode,DWORD dwExceptionFlags,
 	ExceptionRecord.ExceptionFlags = dwExceptionFlags;
 	RtlRaiseException(&ExceptionRecord);
 }
+#endif
 
 
 static HANDLE loadDll(const UNICODE_STRING* str) {

@@ -14,11 +14,11 @@ add_library(ntdllexO OBJECT
 
 add_library(ntdllexS STATIC $<TARGET_OBJECTS:ntdllexO>)
 add_library(ntdllex SHARED $<TARGET_OBJECTS:ntdllexO> 
-	dllMain.c ../include/hotpatch.cc
+	dllMain.c 
 	${CMAKE_CURRENT_BINARY_DIR}/ntdllex.def
 	${CMAKE_CURRENT_BINARY_DIR}/ntdll.def 
 	
 	)
 
-target_link_libraries(ntdllex ntdll ntdllcrt)
+target_link_libraries(ntdllex -lntdll -lntdllcrt -lexshit)
 target_link_options(ntdllex PRIVATE -nostartfiles)

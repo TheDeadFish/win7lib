@@ -2,9 +2,7 @@
 #include "stdshit.h"
 #include "hotpatch.h"
 
-#define IMPGET4(fn)({ void* ret; \
-	void WINAPI _imp__##fn(int,int,int,int); \
-	*(void**)&_imp__##fn; })
+#include <conio.h>
 
 static PVOID getDllBase(PLIST_ENTRY Ent) {
 	return CONTAINING_RECORD(Ent, LDR_DATA_TABLE_ENTRY, 
@@ -52,14 +50,18 @@ static NTSTATUS WINAPI GetProcAddr (
 static 
 void modMap_init(PVOID hNtEx, PVOID hK32Ex) 
 {
+	_cprintf("modMap_init 0\n");
+
 	// get system modules
 	nModMap = 2; 
 	modMap[0].to = hNtEx; modMap[1].to = hK32Ex;
 	modMap[0].from = getSysDll(&modMap[1].from);
 	
+	_cprintf("modMap_init 1\n");
+	
 	// hook LdrpGetProcedureAddress
-	HOTPATCH(hotPatch_getCall(
-		IMPGET4(LdrGetProcedureAddress)),
-		GetProcAddr, &oldGetProcAddr);
+	//HOTPATCH(hotPatch_getCall(
+	//	IMPGET4(LdrGetProcedureAddress),0),
+	//	GetProcAddr, &oldGetProcAddr);
 }
 
