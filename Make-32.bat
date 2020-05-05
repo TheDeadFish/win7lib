@@ -6,7 +6,7 @@
 @set CXXFLAGS=%OCCFLG% %PUSH_ARG%
 @pushd build32
 @%CMAKE% ..\. -DMINGW_TOOLCHAIN_PREFIX= -DARCH=i386
-@mingw32-make 
+@ninja
 @popd
 
 copy /Y bin\bin32\*.dll %PROGRAMS%\lib 

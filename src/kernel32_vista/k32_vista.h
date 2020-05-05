@@ -7,7 +7,7 @@
 //#include <winbase.h>
 #include <windows.h>
 
-#include <ntndk.h>
+#include <ndk/ntndk.h>
 
 DWORD WINAPI
 BaseSetLastNTError(IN NTSTATUS Status);

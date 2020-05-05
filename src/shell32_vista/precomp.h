@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <shlobj.h>
 #include <shlwapi.h>
-#include <ntndk.h>
+#include <ndk/ntndk.h>
 
 #undef Shell_GetCachedImageIndex
 

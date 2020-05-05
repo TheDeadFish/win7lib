@@ -6,7 +6,7 @@
 @set CXXFLAGS=%OCCFLG% %PUSH_ARG% -fno-exceptions
 @pushd build64
 @%CMAKE% ..\. -DMINGW_TOOLCHAIN_PREFIX= -DARCH=amd64
-@mingw32-make
+@ninja
 @popd
 
 copy /Y bin\bin64\*.dll %PROGRAMS%\lib\lib64

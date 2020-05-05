@@ -28,7 +28,7 @@
 #include <winreg.h>
 #include <objbase.h>
 //#include <ntintsafe.h>
-#include <ntndk.h>
+#include <ndk/ntndk.h>
 
 /* SEH support with PSEH */
 //#include <pseh/pseh2.h>

@@ -1,4 +1,5 @@
-#include <ntndk.h>
+#include <windows.h>
+#include <ndk/ntndk.h>
 #include "stdshit.h"
 
 /*
