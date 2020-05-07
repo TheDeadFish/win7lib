@@ -9,4 +9,7 @@
 @ninja
 @popd
 
+Install.bat %PROGRAMS%\lib\lib64 %PROGRAMS%\local\lib64 bin\bin64
+
+
 copy /Y bin\bin64\*.dll %PROGRAMS%\lib\lib64
